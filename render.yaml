@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: toolwebsite-backend
+    env: node
+    buildCommand: apt-get update && apt-get install -y python3 python3-pip && pip3 install rembg pillow && npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: FRONTEND_URL
+        value: https://toolwebsite.vercel.app
+      - key: MONGO_URI
+        sync: false
+      - key: EMAIL
+        sync: false
+      - key: EMAIL_PASSWORD
+        sync: false
+      - key: ENABLE_SERVER_BG_REMOVAL
+        value: true
+      - key: USE_FALLBACK_CLIENT_PROCESSING
+        value: true
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_API_SECRET
+        sync: false 
